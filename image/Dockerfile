@@ -9,7 +9,9 @@ RUN apt-get update && \
   rm -r /tmp/dojo_git && \
   echo 'dojo ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
-RUN pip install virtualenv tox
+RUN pip install virtualenv tox \
+  unittest-xml-reporting \
+  awscli
 
 # ensure pretty bash prompt
 COPY bashrc /home/dojo/.bashrc
