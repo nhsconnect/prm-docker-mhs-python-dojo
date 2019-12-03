@@ -13,6 +13,11 @@ RUN pip install virtualenv tox \
   unittest-xml-reporting \
   awscli
 
+# Install jq to parse json in bash
+RUN wget -O ./jq-linux64 https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 &&\
+  chmod +x ./jq-linux64 &&\
+  mv ./jq-linux64 /usr/bin/jq
+
 # ensure pretty bash prompt
 COPY bashrc /home/dojo/.bashrc
 COPY profile /home/dojo/.profile
