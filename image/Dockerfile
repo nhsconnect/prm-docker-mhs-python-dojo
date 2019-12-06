@@ -9,9 +9,16 @@ RUN apt-get update && \
   rm -r /tmp/dojo_git && \
   echo 'dojo ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
+RUN apt-get update && \
+  apt-get install -y build-essential libssl-dev swig pkg-config
+
+# Temporarily lower security to workaround opentest certs with SHA1 signatures
+RUN sed -i 's/SECLEVEL=2/SECLEVEL=1/' /etc/ssl/openssl.cnf
+
 RUN pip install virtualenv tox \
   unittest-xml-reporting \
-  awscli
+  awscli \
+  python-qpid-proton
 
 # Install jq to parse json in bash
 RUN wget -O ./jq-linux64 https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 &&\
