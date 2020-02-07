@@ -10,7 +10,7 @@ RUN apt-get update && \
   echo 'dojo ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 RUN apt-get update && \
-  apt-get install -y build-essential libssl-dev swig pkg-config
+  apt-get install -y build-essential libssl-dev swig pkg-config ldap-utils
 
 # Temporarily lower security to workaround opentest certs with SHA1 signatures
 RUN sed -i 's/SECLEVEL=2/SECLEVEL=1/' /etc/ssl/openssl.cnf
