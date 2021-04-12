@@ -4,7 +4,7 @@ RUN apt-get update && \
   DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
   sudo git ca-certificates wget \
   build-essential && \
-  git clone --depth 1 -b 0.6.2 https://github.com/kudulab/dojo.git /tmp/dojo_git &&\
+  git clone --depth 1 -b 0.10.3 https://github.com/kudulab/dojo.git /tmp/dojo_git &&\
   /tmp/dojo_git/image_scripts/src/install.sh && \
   rm -r /tmp/dojo_git && \
   echo 'dojo ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
@@ -19,6 +19,8 @@ RUN pip install virtualenv tox \
   unittest-xml-reporting \
   awscli \
   python-qpid-proton
+
+RUN pip install pipenv
 
 # Install jq to parse json in bash
 RUN wget -O ./jq-linux64 https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 &&\
