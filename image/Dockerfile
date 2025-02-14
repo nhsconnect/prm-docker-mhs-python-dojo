@@ -1,4 +1,4 @@
-FROM python:3.9-slim-bookworm
+FROM python:3.13-slim-bookworm
 
 RUN apt-get update && \
   DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
